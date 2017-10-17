@@ -16,6 +16,10 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base 
+end
+
+
 before do
   #Синтаксис ActiveRecord
   @barbers = Barber.all.order "name"
@@ -38,7 +42,7 @@ post '/visit' do
   @color = params[:color]
   
   Client.create(name: @username, phone: @phone, datestamp: @datetime, barber: @barber, color: @color)
-  
+
   erb "Вы записались! #{@username} спасибо что выбрали нас! 
     Ждем вас #{@datetime}. Ваш телефон #{@phone}. Ваш мастер #{@barber}. 
     Выбранный цвет покраски #{@color}."
