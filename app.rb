@@ -16,10 +16,30 @@ end
 class Barber < ActiveRecord::Base
 end
 
-get '/' do
+before do
   #Синтаксис ActiveRecord
-  @barbers = Barber.order "created_at DESC"
+  @barbers = Barber.all.order "name"
+end
 
+get '/' do
   erb :index
 end
+
+get '/visit' do
+  erb :visit
+end
+
+post '/visit' do
+  
+  @username = params[:username] 
+  @phone = params[:phone]
+  @datetime = params[:datetime]
+  @barber = params[:barber]
+  @color = params[:color]
+  
+  erb "Вы записались! #{@username} спасибо что выбрали нас! 
+    Ждем вас #{@datetime}. Ваш телефон #{@phone}. Ваш мастер #{@barber}. 
+    Выбранный цвет покраски #{@color}."
+end
+
 
