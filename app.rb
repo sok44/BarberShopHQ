@@ -37,6 +37,8 @@ post '/visit' do
   @barber = params[:barber]
   @color = params[:color]
   
+  Client.create(name: @username, phone: @phone, datestamp: @datetime, barber: @barber, color: @color)
+  
   erb "Вы записались! #{@username} спасибо что выбрали нас! 
     Ждем вас #{@datetime}. Ваш телефон #{@phone}. Ваш мастер #{@barber}. 
     Выбранный цвет покраски #{@color}."
