@@ -29,6 +29,11 @@ get '/' do
   erb :index
 end
 
+get '/contacts' do
+  erb :contact
+end
+
+
 get '/visit' do
   erb :visit
 end
