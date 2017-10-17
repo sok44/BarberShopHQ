@@ -1,7 +1,7 @@
 class CreateClients < ActiveRecord::Migration[5.1]
 	def change
   	 	#Создаем таблицу клинетов. Надо проверить:тут мы указываем сущность в ед. числе, а таблица создастся с именем во мн. числе.
-	  	create_table :client do |t|
+	  	create_table :clients do |t|
 	  		#text - тип столбца
 	  		t.text :name
 	  		t.text :phone

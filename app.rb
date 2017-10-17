@@ -18,7 +18,7 @@ end
 
 get '/' do
   #Синтаксис ActiveRecord
-  @barbers = Barber.all
+  @barbers = Barber.order "created_at DESC"
 
   erb :index
 end
