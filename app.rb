@@ -40,14 +40,21 @@ end
 
 post '/visit' do
   
-  @username = params[:username] 
-  @phone = params[:phone]
-  @datetime = params[:datetime]
-  @barber = params[:barber]
-  @color = params[:color]
+  #Ламерский код -- 
+  #@username = params[:username] 
+  #@phone = params[:phone]
+  #@datetime = params[:datetime]
+  #@barber = params[:barber]
+  #@color = params[:color]
   
-  Client.create(name: @username, phone: @phone, datestamp: @datetime, barber: @barber, color: @color)
+  #Client.create(name: @username, phone: @phone, datestamp: @datetime, barber: @barber, color: @color)
+  #--
 
+  #тру код --
+  #для этого поменяли представление visit, изменили name у тегов
+  c = Client.new params[:client]
+  c.save
+  #---
   erb "Вы записались! #{@username} спасибо что выбрали нас! 
     Ждем вас #{@datetime}. Ваш телефон #{@phone}. Ваш мастер #{@barber}. 
     Выбранный цвет покраски #{@color}."
