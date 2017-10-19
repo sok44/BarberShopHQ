@@ -59,11 +59,15 @@ post '/visit' do
   #тру код --
   #для этого поменяли представление visit, изменили name у тегов на client[имя совпадающее с именем поля в моделт]
   c = Client.new params[:client]
-  c.save
+  if c.save
+    erb "Вы записались! #{@username} спасибо что выбрали нас! 
+      Ждем вас #{@datetime}. Ваш телефон #{@phone}. Ваш мастер #{@barber}. 
+      Выбранный цвет покраски #{@color}."
+  else
+    @error = c.errors.full_messages.first
+    erb :visit
+  end
   #---
-  erb "Вы записались! #{@username} спасибо что выбрали нас! 
-    Ждем вас #{@datetime}. Ваш телефон #{@phone}. Ваш мастер #{@barber}. 
-    Выбранный цвет покраски #{@color}."
 end
 
 
