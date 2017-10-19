@@ -11,6 +11,12 @@ set :database, "sqlite3:barbershop.db"
 #2. Создаем сущности как класс наследуемый от  ActiveRecord::Base (клиент, заказы, )
 #mapping или отражение 
 class Client < ActiveRecord::Base 
+  #Валидация
+  # если последним параметром идет хеш то фигурные скобки можно опускать и просто перечилять через запятую
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :datestamp, presence: true
+  validates :color, presence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -51,7 +57,7 @@ post '/visit' do
   #--
 
   #тру код --
-  #для этого поменяли представление visit, изменили name у тегов
+  #для этого поменяли представление visit, изменили name у тегов на client[имя совпадающее с именем поля в моделт]
   c = Client.new params[:client]
   c.save
   #---
