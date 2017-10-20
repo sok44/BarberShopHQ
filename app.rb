@@ -28,7 +28,7 @@ end
 
 before do
   #Синтаксис ActiveRecord
-  @barbers = Barber.all.order "name"
+  @barbers = Barber.order 'name'
 end
 
 get '/' do
@@ -77,4 +77,7 @@ get '/barber/:id' do
 
 end
 
-
+get '/bookings' do
+  @clients = Client.order 'created_at DESC'
+  erb :bookings
+end
