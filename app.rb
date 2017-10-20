@@ -71,4 +71,9 @@ post '/visit' do
   #---
 end
 
+get '/barber/:id' do
+  erb :barber
+
+end
+
 
